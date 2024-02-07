@@ -1,5 +1,6 @@
 import {Navbar} from "./__components/navbar"
 import {Sidebar} from "./__components/sidebar"
+import {Container} from "./__components/container"
 
 
 const BrowseLayout = ({
@@ -9,7 +10,10 @@ const BrowseLayout = ({
     <Navbar/>
     <div className="flex h-full pt-20">
         <Sidebar/>
-        {children}</div>
+        <Container>
+        {children}
+        </Container>
+        </div>
     </>
 )}
 
