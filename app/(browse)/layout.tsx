@@ -1,6 +1,7 @@
 import {Navbar} from "./__components/navbar"
-import {Sidebar} from "./__components/sidebar"
+import {Sidebar, SidebarSkeleton} from "./__components/sidebar"
 import {Container} from "./__components/container"
+import { Suspense } from "react"
 
 
 const BrowseLayout = ({
@@ -9,7 +10,9 @@ const BrowseLayout = ({
     <>
     <Navbar/>
     <div className="flex h-full pt-20">
-        <Sidebar/>
+        <Suspense fallback={<SidebarSkeleton/>}>
+            <Sidebar/>
+        </Suspense>
         <Container>
         {children}
         </Container>
