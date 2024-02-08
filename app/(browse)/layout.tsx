@@ -3,7 +3,6 @@ import {Sidebar, SidebarSkeleton} from "./__components/sidebar"
 import {Container} from "./__components/container"
 import { Suspense } from "react"
 
-
 const BrowseLayout = ({
     children,
 }: {children: React.ReactNode}) => { return (
