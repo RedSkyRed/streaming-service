@@ -21,6 +21,20 @@ export const getRecommended = async () => {
         users = await db.user.findMany({
             where: {
                 AND: [
+                    {
+                        blockedBy: {
+                            none: {
+                                blockerId: userId
+                            }
+                        }
+                    },
+                    {
+                        blocking: {
+                            none: {
+                                blockedId: userId
+                            }
+                        }
+                    },
                     { NOT: {
                         followedBy: {
                         some: {
@@ -32,9 +46,7 @@ export const getRecommended = async () => {
                         //NOT: {
                             id: userId
                         // },
-                    },
-                    
-                    
+                    },         
         ]
                 
             },
