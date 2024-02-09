@@ -20,9 +20,23 @@ export const getRecommended = async () => {
     if (userId) {
         users = await db.user.findMany({
             where: {
-                NOT: {
-                    id: userId
-                }
+                AND: [
+                    { NOT: {
+                        followedBy: {
+                        some: {
+                            followerId: userId
+                        }}},
+                    },
+                    // For whatever reason the Not triggers twice, hence removing the need for a second Not.
+                    {
+                        //NOT: {
+                            id: userId
+                        // },
+                    },
+                    
+                    
+        ]
+                
             },
             orderBy: {
                 createdAt: "desc"
@@ -34,5 +48,5 @@ export const getRecommended = async () => {
                 createdAt: "desc"
             }
         })
-}
-return users}
+    }
+return users }
