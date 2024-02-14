@@ -28,11 +28,11 @@ model User {
 }
 
 model Stream {
-  id String @id @default(uuid()) @map("_id")
+  id String @id @default(auto()) @map("_id") @db.ObjectId
   name String
   thumbnailUrl String?
 
-  // ingressId String? @unique
+  ingressId String @unique
   serverUrl String?
   streamKey String?
 
