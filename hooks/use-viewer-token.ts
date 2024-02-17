@@ -14,12 +14,10 @@ export const useViewerToken = (hostIdentity: string) => {
                 const viewerToken = await createViewerToken(hostIdentity)
                 setToken(viewerToken)
 
-                const decodedToken = jwtDecode(viewerToken) as JwtPayload & {
-                    name?: string
-                }
+                const decodedToken = jwtDecode(viewerToken) as JwtPayload & {name?: string}
 
                 const name = decodedToken?.name
-                const identity = decodedToken.jti
+                const identity = decodedToken.sub
 
                 if(identity) {
                     setIdentity(identity)
@@ -42,6 +40,5 @@ export const useViewerToken = (hostIdentity: string) => {
             name,
             identity
         }
-
 }
 

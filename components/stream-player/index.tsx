@@ -15,8 +15,6 @@ export const StreamPlayer = ({user, stream, isFollowing}: StreamPlayerProps) => 
 
     const {token, name, identity} = useViewerToken(user.id)
 
-    console.log(identity)
-
     if(!token || !name || !identity){
         return (
             <div>Cannot watch the stream</div>
@@ -36,7 +34,6 @@ export const StreamPlayer = ({user, stream, isFollowing}: StreamPlayerProps) => 
                 />
 
             </div>
-            Stream
         </LiveKitRoom>
         </>
     )
