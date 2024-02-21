@@ -12,10 +12,10 @@ import {
 import { ChatVariant, useChatSidebar } from "@/store/use-chat-sidebar";
 import { match } from "assert";
 
-import { ChatForm} from "./chat-form";
+import { ChatForm, ChatFormSkeleton} from "./chat-form";
 // import { ChatList, ChatListSkeleton } from "./chat-list";
 import { ChatHeader, ChatHeaderSkeleton } from "./chat-header";
-import { ChatList } from "./chat-list";
+import { ChatList, ChatListSkeleton } from "./chat-list";
 import { ChatCommunity } from "./chat-community";
 // import { ChatCommunity } from "./chat-community";
 
@@ -98,6 +98,16 @@ export const Chat = ({
                     isHidden={isHidden}
                 />
             )}
+        </div>
+    )
+}
+
+export const ChatSkeleton = () => {
+    return (
+        <div className="flex flex-col border-l border-b pt-0 h-[calc(100vh-80px)] border-2">
+            <ChatHeaderSkeleton/>
+            <ChatListSkeleton/>
+            <ChatFormSkeleton/>
         </div>
     )
 }
